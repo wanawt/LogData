@@ -1,1 +1,0 @@
-"{  \"channel\": \"xiaomi\",  \"create_time\": \"2020-03-20 04:49:18\",  \"device_id\": \"99000663260265\",  \"device_unique_id\": \"ffffffff-a0ba-faad-ffff-ffffd95a0761\",  \"environment\": \"production\",  \"ip\": \"223.106.49.9\",  \"os\": \"android\",  \"platform\": \"native\",  \"topic\": \"activate\",  \"user_id\": \"d55e3f368b9dcb35\",  \"version\": \"2.1.3\"}"
