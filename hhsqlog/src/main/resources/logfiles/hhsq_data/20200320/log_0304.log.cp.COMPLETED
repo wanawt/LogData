@@ -1,0 +1,1 @@
+"{  \"channel\": \"pc\",  \"create_time\": \"2020-03-20 03:04:38\",  \"device_id\": \"\",  \"device_unique_id\": \"00000000-113c-fe85-ffff-ffffef05ac4a\",  \"environment\": \"production\",  \"ip\": \"192.168.2.152\",  \"os\": \"android\",  \"platform\": \"native\",  \"topic\": \"activate\",  \"user_id\": \"df892856b7dbc7af\",  \"version\": \"2.1.4\"}"

@@ -1,0 +1,1 @@
+"{  \"channel\": \"huawei\",  \"create_time\": \"2020-03-20 03:09:13\",  \"device_id\": \"864032039351927\",  \"device_unique_id\": \"ffffffff-d1e7-d289-ffff-ffffa8428678\",  \"environment\": \"production\",  \"ip\": \"110.87.121.152\",  \"os\": \"android\",  \"platform\": \"native\",  \"topic\": \"activate\",  \"user_id\": \"4208a37d8577457c\",  \"version\": \"2.1.4\"}"

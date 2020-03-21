@@ -1,0 +1,4 @@
+{"os":"ios","device_id":"8AF06D67-E85A-4089-800B-438C52AEC738","platform":"native","environment":"production","version":"2.1.4","create_time":"2020-03-20 03:46:13","topic":"activate","ip":"61.158.152.158"}
+{"topic":"clipper","timestamp":"2020-03-20 03:46:13","user_id":"0","clipper":{"text":"https:\/\/item.taobao.com\/item.htm?id=562906383336","type":"link","item_id":"TB_562906383336"},"environment":"production"}
+{"os":"ios","device_id":"8AF06D67-E85A-4089-800B-438C52AEC738","platform":"native","environment":"production","version":"2.1.4","create_time":"2020-03-20 03:46:26","topic":"page","ip":"61.158.152.158","page":"账号登录页面"}
+{"os":"ios","device_id":"8AF06D67-E85A-4089-800B-438C52AEC738","platform":"native","environment":"production","user_id":"9a8ef9c73d3f8631","create_time":"2020-03-20 03:46:36","version":"2.1.4","ip":"61.158.152.158","topic":"activate"}
