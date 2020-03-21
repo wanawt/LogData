@@ -6,7 +6,7 @@ spring:
     password: Zwfwz@52525
     driver-class-name: com.mysql.cj.jdbc.Driver  #数据库链接驱动
   resources:
-    static-locations: classpath:templates/,classpath:static/
+    static-locations: classpath:templates/,classpath:static/,classpath:node_modules/
   mvc:
     view:
 #      prefix: html/
