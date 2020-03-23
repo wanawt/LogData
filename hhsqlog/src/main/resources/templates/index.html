@@ -1,13 +1,12 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Chart.js - Html5 chart plugins</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
-<body>
 
+<body>
 
 <div class="container">
     <h1 class="text-center">Chart.js</h1>
@@ -18,6 +17,10 @@
         <div class="col-sm-6">
             <h2 class="text-center">Line Chart</h2>
             <canvas id="lines-graph"></canvas>
+            <div id="app">
+                <el-button @click="addLineChartData">添加</el-button>
+                <el-button @click="removeLineChartData">删除</el-button>
+            </div>
         </div>
         <div class="col-sm-6">
             <h2 class="text-center">Bars Chart</h2>
@@ -35,7 +38,13 @@
     </div>
 </div>
 
+
+</body>
+
+<script src="vue/dist/vue.js"></script>
 <script src="chart.js/dist/Chart.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<script src="axios/dist/axios.js"></script>
 <script>
 
     // Data for line charts
@@ -66,16 +75,6 @@
             }
         ]
     };
-
-    var ctx = document.getElementById("lines-graph").getContext("2d");
-    var LineChart = new Chart(ctx, {
-        type: 'line',
-        data: lineChartData,
-        responsive: true,
-        bezierCurve : false
-    });
-
-
 
     // Bar Charts
     var barChartData = {
@@ -141,7 +140,6 @@
         data: pieData
     });
 
-
     // Data for doughnut chart
     var doughnutData = {
         labels: [
@@ -172,8 +170,48 @@
         responsive : true
     });
 
+    function addData(chart, label, data) {
+        chart.data.labels.push(label);
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.push(data);
+        });
+        chart.update();
+    }
 
+    function removeData(chart) {
+        chart.data.labels.pop();
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+        });
+        chart.update();
+    }
+
+    var ctx = document.getElementById("lines-graph").getContext("2d");
+    var LineChart = new Chart(ctx, {
+        type: 'line',
+        data: lineChartData,
+        responsive: true,
+        bezierCurve : false
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'Vue.js'
+        },
+        methods: {
+            addLineChartData: function(event) {
+                addData(LineChart, "changed", 60);
+            },
+            removeLineChartData: function (event) {
+                removeData(LineChart);
+            }
+        },
+        mounted () {
+            axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                .then(response => (this.info = response))
+        }
+    });
 
 </script>
-</body>
 </html>

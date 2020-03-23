@@ -13,7 +13,7 @@ public class LogDBManager {
 
     public static void prepareSql () throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        mConnect = DriverManager.getConnection("jdbc:mysql://localhost:3306/hhsqlog?useSSL=false&serverTimezone=UTC","root","Zwfawt@525125");
+        mConnect = DriverManager.getConnection("jdbc:mysql://localhost:3306/hhsqlog?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true","root","Zwfwz@52525");
         stmt = mConnect.createStatement();
     }
 

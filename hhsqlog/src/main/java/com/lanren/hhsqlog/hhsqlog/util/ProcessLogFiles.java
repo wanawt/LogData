@@ -77,9 +77,11 @@ public class ProcessLogFiles {
                 String[] jsonStrings = s.split("\n");
                 for (int i = 0; i < jsonStrings.length; i++) {
                     LogData logData = parseJsonObj(jsonStrings[i]);
-                    jsonObjs.add(logData);
-                    count++;
-                    System.out.println('\n'+count);
+                    if (logData.getOs() != null) {
+                        jsonObjs.add(logData);
+                        count++;
+                        System.out.println('\n'+count);
+                    }
                 }
             } else {
                 File[] subFs = f.listFiles();
@@ -88,9 +90,11 @@ public class ProcessLogFiles {
                     String[] jsonStrings = s.split("\n");
                     for (int i = 0; i < jsonStrings.length; i++) {
                         LogData logData = parseJsonObj(jsonStrings[i]);
-                        jsonObjs.add(logData);
-                        count++;
-                        System.out.println('\n'+count);
+                        if (logData.getOs() != null) {
+                            jsonObjs.add(logData);
+                            count++;
+                            System.out.println('\n'+count);
+                        }
                     }
                 }
             }
