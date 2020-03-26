@@ -3,7 +3,7 @@ package com.lanren.hhsqlog.hhsqlog.util;
 import generate.LogData;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Date;
 
 public class LogDBManager {
@@ -17,17 +17,28 @@ public class LogDBManager {
         stmt = mConnect.createStatement();
     }
 
-    public static void printLogs() throws SQLException {
-        String sql;
-        sql = "SELECT * FROM log_data where os ='ios'";
-        ResultSet rs ;
+    public static ArrayList queryLogData() throws SQLException, ClassNotFoundException {
+        prepareSql();;
+        String sql = "select count(keyword) as 'count', keyword from log_data\n" +
+                "group by keyword having count(*)>1\n" +
+                "order by count(keyword) desc;";
 
+        ResultSet rs = stmt.executeQuery(sql);
         int i=0;
-
+        ArrayList list = new ArrayList();
+        while (rs.next()) {
+            if (i >= 5) break;
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("count", String.valueOf(rs.getInt("count")));
+            map.put("keyword", rs.getString("keyword"));
+            list.add(map);
+            i++;
+        }
         // 完成后关闭
-//        rs.close();
+        rs.close();
         stmt.close();
         mConnect.close();
+        return list;
     }
 
     public static void insertTableFromLog (ArrayList<LogData> jsonObjs) throws SQLException, ClassNotFoundException {
@@ -66,7 +77,7 @@ public class LogDBManager {
 
                 // 日期时间
                 String createTime = logData.getCreateTime();
-                if (createTime != null) {
+                if (createTime != null && createTime.startsWith("20")) {
                     Timestamp dateTime = Timestamp.valueOf(createTime);
                     if (dateTime != null) {
                         ps.setTimestamp(23, dateTime);

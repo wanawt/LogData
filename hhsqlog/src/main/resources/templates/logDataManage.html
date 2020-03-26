@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    ssss{{serverdata}}
+    <el-button @click="insertData">插入</el-button>
+    <el-button @click="refreshData">查询</el-button>
+</div>
+</body>
+<script src="vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            serverdata: 'hhh'
+        },
+        methods: {
+            insertData() {
+                axios.get("http://localhost:8080/insertLogData").then();
+            },
+            refreshData() {
+                axios.get("http://localhost:8080/queryLogData").then(
+                    response => {
+                        var s = null;
+                        for (var i=0; i<response.data.length; i++) {
+                            s = s + response.data[i];
+                            console.log(response.data[i]);
+                        }
+                        this.serverdata = s;
+                    }
+                );
+            }
+        }
+    })
+</script>
+</html>

@@ -90,7 +90,7 @@ public class ProcessLogFiles {
                     String[] jsonStrings = s.split("\n");
                     for (int i = 0; i < jsonStrings.length; i++) {
                         LogData logData = parseJsonObj(jsonStrings[i]);
-                        if (logData.getOs() != null) {
+                        if (logData != null && logData.getOs() != null) {
                             jsonObjs.add(logData);
                             count++;
                             System.out.println('\n'+count);
