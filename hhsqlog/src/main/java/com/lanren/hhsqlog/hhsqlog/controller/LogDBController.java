@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 @RestController
@@ -17,7 +18,11 @@ public class LogDBController {
     @RequestMapping("/insertLogData")
     public String insertLogData() throws SQLException, ClassNotFoundException {
         ArrayList list = ProcessLogFiles.parseJsonFile();
-        LogDBManager.insertTableFromLog(list);
+        try {
+            LogDBManager.insertTableFromLog(list);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return "{\"msg\":\"更新成功\"}";
     }
 
